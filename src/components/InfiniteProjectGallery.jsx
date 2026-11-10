@@ -83,6 +83,479 @@ export default function InfiniteProjectGallery({ onSelectProject }) {
   // Double the items for seamless infinite wrapping
   const allItems = [...galleryItems, ...galleryItems];
 
+  const renderLiveCaseVisual = (item) => {
+    switch (item.id) {
+      case 'semadi-dashboard':
+        return (
+          <div style={{
+            height: '100%',
+            width: '100%',
+            background: '#F8FAFC',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            boxSizing: 'border-box',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid #E2E8F0',
+              paddingBottom: '5px',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{
+                  width: '18px',
+                  height: '18px',
+                  background: '#0B192C',
+                  border: '1px solid #C5A880',
+                  color: '#C5A880',
+                  fontFamily: 'Georgia, serif',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  S
+                </div>
+                <span style={{ fontFamily: 'Georgia, serif', fontSize: '0.72rem', fontWeight: 700, color: '#0B192C', letterSpacing: '0.04em' }}>
+                  SEMADI // KPI
+                </span>
+              </div>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.58rem',
+                background: 'rgba(197, 168, 128, 0.15)',
+                color: '#9E7F55',
+                padding: '1px 6px',
+                fontWeight: 700,
+              }}>
+                TELEMETRY
+              </span>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '6px',
+              margin: '4px 0',
+            }}>
+              <div style={{ background: '#FFFFFF', padding: '5px 7px', border: '1px solid #E2E8F0', borderLeft: '2px solid #C5A880' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#64748B', textTransform: 'uppercase' }}>Monthly Yield</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.92rem', fontWeight: 700, color: '#0B192C', lineHeight: 1.1 }}>R1.84M</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#059669', fontWeight: 600 }}>↑ +14.2% YoY</div>
+              </div>
+              <div style={{ background: '#FFFFFF', padding: '5px 7px', border: '1px solid #E2E8F0', borderLeft: '2px solid #0B192C' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#64748B', textTransform: 'uppercase' }}>Occupancy</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.92rem', fontWeight: 700, color: '#0B192C', lineHeight: 1.1 }}>94.2%</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#64748B' }}>42 Units Active</div>
+              </div>
+            </div>
+
+            <div style={{
+              background: '#0B192C',
+              color: '#FFFFFF',
+              padding: '4px 8px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              fontSize: '0.58rem',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              <span style={{ color: '#E2E8F0' }}>Parktown Commercial Centre</span>
+              <span style={{ color: '#C5A880', fontWeight: 700 }}>100% Leased</span>
+            </div>
+          </div>
+        );
+
+      case 'ni-experience':
+        return (
+          <div style={{
+            height: '100%',
+            width: '100%',
+            background: 'radial-gradient(circle at 50% 30%, #1e1b2e 0%, #080709 90%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            boxSizing: 'border-box',
+            color: '#FFFFFF',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              paddingBottom: '5px',
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: '#d4af37', letterSpacing: '0.12em' }}>
+                NI // CHAPTER 01
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ width: '5px', height: '5px', background: '#d4af37', display: 'inline-block' }} />
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.56rem', color: '#a1a1aa' }}>60 FPS Spring</span>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center', margin: '2px 0' }}>
+              <div style={{
+                fontFamily: 'var(--font-display, Georgia, serif)',
+                fontSize: '2.1rem',
+                lineHeight: 1,
+                color: '#f5f0e6',
+                letterSpacing: '0.06em',
+                textShadow: '0 0 20px rgba(212, 175, 55, 0.45)',
+              }}>
+                Ni
+              </div>
+              <div style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.55rem',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: '#d4af37',
+                marginTop: '2px',
+              }}>
+                Liquid Glassmorphism & Mesh
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '5px', justifyContent: 'center' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.53rem', padding: '2px 6px', background: 'rgba(255, 255, 255, 0.08)', color: '#f4f4f5', border: '1px solid rgba(255, 255, 255, 0.14)' }}>
+                Optical Glass Pill
+              </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.53rem', padding: '2px 6px', background: 'rgba(255, 255, 255, 0.08)', color: '#f4f4f5', border: '1px solid rgba(255, 255, 255, 0.14)' }}>
+                Shader Depth
+              </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.53rem', padding: '2px 6px', background: 'rgba(212, 175, 55, 0.15)', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.3)' }}>
+                React 19
+              </span>
+            </div>
+          </div>
+        );
+
+      case 'buddy-lms':
+        return (
+          <div style={{
+            height: '100%',
+            width: '100%',
+            background: '#FAF8F5',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            boxSizing: 'border-box',
+            color: '#1C1917',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid #E7E5E0',
+              paddingBottom: '5px',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <img
+                  src="/buddy-learning-logo-transparent.png"
+                  alt="Buddy Learning"
+                  style={{ height: '16px', width: 'auto', display: 'block' }}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', fontWeight: 800, color: '#1C1917' }}>
+                  BUDDY<span style={{ color: '#F8991D' }}>.</span>
+                </span>
+              </div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                padding: '2px 6px',
+                background: '#FEF5E7',
+                border: '1px solid rgba(248, 153, 29, 0.35)',
+              }}>
+                <span style={{ fontSize: '0.65rem' }}>🔥</span>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.62rem', fontWeight: 700, color: '#9C5B07' }}>
+                  12-Day Streak
+                </span>
+              </div>
+            </div>
+
+            <div style={{
+              background: '#FFFFFF',
+              border: '1px solid #E7E5E0',
+              padding: '6px 8px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+              <div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', fontWeight: 700, color: '#1C1917' }}>
+                  Advanced Calculus II
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.54rem', color: '#78716C' }}>
+                  Dr. Aris V. • Live In 14m
+                </div>
+              </div>
+              <span style={{
+                background: '#F8991D',
+                color: '#FFFFFF',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.6rem',
+                fontWeight: 700,
+                padding: '3px 8px',
+              }}>
+                Launch Room
+              </span>
+            </div>
+
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              fontSize: '0.56rem',
+              fontFamily: 'var(--font-mono)',
+              color: '#78716C',
+            }}>
+              <span>Next.js 19 × FastAPI</span>
+              <span style={{ color: '#9C5B07', fontWeight: 700 }}>1,420 XP Active</span>
+            </div>
+          </div>
+        );
+
+      case 'semadi-playbook':
+        return (
+          <div style={{
+            height: '100%',
+            width: '100%',
+            background: '#FFFFFF',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            boxSizing: 'border-box',
+            color: '#0B192C',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid #E2E8F0',
+              paddingBottom: '5px',
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', fontWeight: 700, color: '#0B192C', letterSpacing: '0.04em' }}>
+                SEMADI // SPEC-04
+              </span>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.56rem',
+                color: '#059669',
+                background: '#ECFDF5',
+                border: '1px solid #A7F3D0',
+                padding: '1px 6px',
+                fontWeight: 700,
+              }}>
+                VERIFIED TERMS
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', margin: '3px 0' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.58rem', fontFamily: 'var(--font-mono)', color: '#334155' }}>
+                <span style={{ color: '#C5A880', fontWeight: 700 }}>✓</span>
+                <span>Triple-Net (NNN) Master Agreement</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.58rem', fontFamily: 'var(--font-mono)', color: '#334155' }}>
+                <span style={{ color: '#C5A880', fontWeight: 700 }}>✓</span>
+                <span>ZAR Rent Escalation (8.5% Index)</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.58rem', fontFamily: 'var(--font-mono)', color: '#334155' }}>
+                <span style={{ color: '#C5A880', fontWeight: 700 }}>✓</span>
+                <span>Fit-Out Capital Allowance Matrix</span>
+              </div>
+            </div>
+
+            <div style={{
+              background: '#0B192C',
+              color: '#C5A880',
+              padding: '4px 8px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              fontSize: '0.56rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 600,
+            }}>
+              <span>INSTITUTIONAL TENANT PORTAL</span>
+              <span>v2.4 SPEC</span>
+            </div>
+          </div>
+        );
+
+      case 'ni-bento':
+        return (
+          <div style={{
+            height: '100%',
+            width: '100%',
+            background: '#080709',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            boxSizing: 'border-box',
+            color: '#FFFFFF',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              paddingBottom: '5px',
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: '#d4af37', letterSpacing: '0.08em' }}>
+                NI // BENTO VAULT
+              </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.56rem', color: '#a1a1aa' }}>
+                Framer Motion v12
+              </span>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '6px',
+              margin: '3px 0',
+            }}>
+              <div style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(212, 175, 55, 0.3)',
+                padding: '5px 7px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#d4af37', textTransform: 'uppercase' }}>
+                  Chronos Lock
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', fontWeight: 700, color: '#f5f0e6', margin: '2px 0' }}>
+                  04:18:22
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.48rem', color: '#a1a1aa' }}>
+                  Time-Gate Active
+                </div>
+              </div>
+
+              <div style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                padding: '5px 7px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#a1a1aa', textTransform: 'uppercase' }}>
+                  Archive 02
+                </div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.66rem', fontWeight: 600, color: '#f5f0e6', margin: '2px 0' }}>
+                  Sealed Letter
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.48rem', color: '#d4af37' }}>
+                  Tactile Spring
+                </div>
+              </div>
+            </div>
+
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              fontSize: '0.54rem',
+              fontFamily: 'var(--font-mono)',
+              color: '#a1a1aa',
+              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              paddingTop: '3px',
+            }}>
+              <span>Micro-Interactions</span>
+              <span style={{ color: '#d4af37' }}>120Hz Responsive</span>
+            </div>
+          </div>
+        );
+
+      case 'buddy-billing':
+        return (
+          <div style={{
+            height: '100%',
+            width: '100%',
+            background: '#FAF8F5',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            boxSizing: 'border-box',
+            color: '#1C1917',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid #E7E5E0',
+              paddingBottom: '5px',
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', fontWeight: 700, color: '#9C5B07', letterSpacing: '0.04em' }}>
+                BUDDY // FASTAPI CRON
+              </span>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.54rem',
+                color: '#15803D',
+                background: '#DCFCE7',
+                border: '1px solid #86EFAC',
+                padding: '1px 5px',
+                fontWeight: 700,
+              }}>
+                POPIA SECURE
+              </span>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '6px',
+              margin: '3px 0',
+            }}>
+              <div style={{ background: '#FFFFFF', padding: '5px 7px', border: '1px solid #E7E5E0' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#78716C', textTransform: 'uppercase' }}>Invoices Sent</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.82rem', fontWeight: 700, color: '#1C1917' }}>128 Settled</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: '#15803D', fontWeight: 600 }}>0% Failed Retries</div>
+              </div>
+              <div style={{ background: '#FFFFFF', padding: '5px 7px', border: '1px solid #E7E5E0' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.52rem', color: '#78716C', textTransform: 'uppercase' }}>Volume Processed</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.82rem', fontWeight: 700, color: '#F8991D' }}>R48,600</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: '#78716C' }}>SAST Recurrence</div>
+              </div>
+            </div>
+
+            <div style={{
+              background: '#FFFFFF',
+              border: '1px solid #E7E5E0',
+              padding: '3px 6px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              fontSize: '0.54rem',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              <span style={{ color: '#78716C' }}>Lesson Audio LLM Recaps:</span>
+              <span style={{ color: '#9C5B07', fontWeight: 700 }}>100% Automated</span>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     const pixelsPerSecond = 35; // Gertix scroll speed
 
@@ -231,6 +704,13 @@ export default function InfiniteProjectGallery({ onSelectProject }) {
           {allItems.map((item, idx) => (
             <article
               key={`${item.id}-${idx}`}
+              onClick={() => {
+                if (!isDragging) {
+                  const target = document.getElementById('portfolio');
+                  if (target) target.scrollIntoView({ behavior: 'smooth' });
+                  onSelectProject?.(item.projectId);
+                }
+              }}
               style={{
                 width: '380px',
                 flexShrink: 0,
@@ -243,6 +723,7 @@ export default function InfiniteProjectGallery({ onSelectProject }) {
                 justifyContent: 'space-between',
                 padding: '36px 32px',
                 minHeight: '480px',
+                cursor: 'pointer',
                 transition: 'background-color 0.2s ease',
               }}
               onMouseEnter={(e) => {
@@ -306,42 +787,14 @@ export default function InfiniteProjectGallery({ onSelectProject }) {
 
                 {/* Architectural Graphic / Visual Frame */}
                 <div style={{
-                  height: '140px',
+                  height: '155px',
                   border: 'var(--border-style)',
-                  background: 'rgba(248, 249, 250, 0.9)',
                   marginBottom: '24px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '20px',
                   position: 'relative',
                   overflow: 'hidden',
+                  background: 'var(--bg-primary)',
                 }}>
-                  <div style={{
-                    position: 'absolute',
-                    top: '8px',
-                    left: '12px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.66rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    color: 'var(--text-muted)',
-                  }}>
-                    Live Case
-                  </div>
-
-                  <span style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.82rem',
-                    fontWeight: 600,
-                    padding: '6px 14px',
-                    border: 'var(--border-style)',
-                    background: '#ffffff',
-                    color: item.accent,
-                  }}>
-                    {item.tag}
-                  </span>
+                  {renderLiveCaseVisual(item)}
                 </div>
 
                 <p style={{
