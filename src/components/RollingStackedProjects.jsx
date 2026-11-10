@@ -43,7 +43,7 @@ export default function RollingStackedProjects() {
       accent: '#0033a0',
       badge: 'Featured Experience',
       hasDirectLink: true,
-      directLinkUrl: 'https://ni-interactive.vercel.app',
+      directLinkUrl: 'https://ni-mauve.vercel.app',
       stats: [
         { label: 'Motion Engine', value: 'Framer Motion v12' },
         { label: 'Responsiveness', value: 'Mobile & Desktop' },
@@ -61,17 +61,18 @@ export default function RollingStackedProjects() {
       id: 'buddy-learning',
       number: '03',
       title: 'Buddy Learning LMS — Operations Engine',
-      category: 'EdTech Platform & Proposed LMS',
+      category: 'EdTech Platform & Tutoring LMS',
       tags: ['Next.js 19', 'FastAPI (Python)', 'PostgreSQL RDS', 'AWS S3 Vault', 'POPIA Compliant'],
-      description: 'A comprehensive software platform proposal, operational implementation plan, and technical architecture for an AI-integrated Learning Management System transforming manual scheduling and spreadsheets into a high-concurrency automated digital ecosystem.',
+      description: 'A comprehensive software platform, operational implementation plan, and technical architecture for an AI-integrated Learning Management System transforming manual scheduling and spreadsheets into a high-concurrency automated digital ecosystem.',
       bg: '#FAF8F5',
       accent: '#F8991D',
-      badge: 'Proposed LMS Specification',
-      isProposed: true,
+      badge: 'Live Platform & Architecture',
+      hasDirectLink: true,
+      directLinkUrl: 'https://buddy-learning-ten.vercel.app/',
       stats: [
         { label: 'Architecture', value: '4 Role Portals' },
         { label: 'Backend Engine', value: 'FastAPI Async' },
-        { label: 'Data Security', value: 'POPIA Compliant' },
+        { label: 'Deployment', value: 'Live on Vercel' },
       ],
       previewHeadline: 'Automated Operations & Multi-Role Hub',
       previewDetails: 'Dynamic tutor remuneration cron, dynamic PDF invoicing, AI session summaries, and institutional cohort metrics.',
@@ -232,7 +233,7 @@ export default function RollingStackedProjects() {
                     </button>
                   )}
 
-                  {/* Project 02: Ni Direct Website Link */}
+                  {/* Direct Website Link (Ni & Buddy Learning) */}
                   {project.hasDirectLink && (
                     <a
                       href={project.directLinkUrl}
@@ -243,40 +244,18 @@ export default function RollingStackedProjects() {
                         padding: '12px 22px',
                         fontSize: '0.82rem',
                         borderColor: project.accent,
-                        color: project.accent,
+                        color: project.id === 'buddy-learning' ? '#9C5B07' : project.accent,
                         background: 'rgba(255, 255, 255, 0.95)',
                         textDecoration: 'none',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '8px',
+                        fontWeight: 700,
                       }}
                     >
-                      <span>Visit Website</span>
+                      <span>{project.id === 'buddy-learning' ? 'Visit Live Platform' : 'Visit Live Website'}</span>
                       <span aria-hidden="true">↗</span>
                     </a>
-                  )}
-
-                  {/* Project 03: Buddy LMS Spec Link (to be added later) */}
-                  {project.isProposed && (
-                    <div
-                      style={{
-                        padding: '12px 18px',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.06em',
-                        border: '1px dashed var(--border-dark)',
-                        background: 'rgba(255, 255, 255, 0.65)',
-                        color: 'var(--text-secondary)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                    >
-                      <span style={{ width: '6px', height: '6px', background: project.accent }} />
-                      <span>Direct Link: Coming Soon</span>
-                    </div>
                   )}
                 </div>
               </div>
@@ -841,22 +820,28 @@ export default function RollingStackedProjects() {
                             <span style={{ color: '#78716C' }}>Mr. M. Khumalo</span>
                           </div>
 
-                          {/* Authentic Honey Amber Button */}
-                          <div style={{
-                            padding: '5px 12px',
-                            background: '#F8991D',
-                            color: '#FFFFFF',
-                            fontFamily: 'var(--font-sans)',
-                            fontSize: '0.72rem',
-                            fontWeight: 700,
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            boxShadow: '0 2px 4px rgba(248, 153, 29, 0.25)',
-                          }}>
-                            <span>Join Classroom</span>
+                          {/* Authentic Honey Amber Button linking to live platform */}
+                          <a
+                            href={project.directLinkUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              padding: '5px 12px',
+                              background: '#F8991D',
+                              color: '#FFFFFF',
+                              fontFamily: 'var(--font-sans)',
+                              fontSize: '0.72rem',
+                              fontWeight: 700,
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              textDecoration: 'none',
+                              boxShadow: '0 2px 4px rgba(248, 153, 29, 0.25)',
+                            }}
+                          >
+                            <span>Launch Room</span>
                             <span>→</span>
-                          </div>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -874,9 +859,24 @@ export default function RollingStackedProjects() {
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <span style={{ width: '6px', height: '6px', background: '#10B981', display: 'inline-block' }} />
-                        <span style={{ color: '#44403C' }}>Next.js 19 + FastAPI + RDS</span>
+                        <span style={{ color: '#44403C' }}>Live on Vercel • Next.js 19</span>
                       </div>
-                      <span style={{ color: '#9C5B07', fontWeight: 600 }}>POPIA Compliant</span>
+                      <a
+                        href={project.directLinkUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: '#9C5B07',
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                        }}
+                      >
+                        <span>Open Platform</span>
+                        <span>↗</span>
+                      </a>
                     </div>
                   </div>
                 )}

@@ -39,7 +39,7 @@ export default function InfiniteProjectGallery({ onSelectProject }) {
       projectId: 'buddy-learning',
       number: '03',
       title: 'Buddy Learning LMS — Operations Engine',
-      category: 'Proposed LMS Platform',
+      category: 'EdTech LMS Platform',
       year: '2026',
       accent: '#F8991D',
       tag: 'FastAPI × Next.js 19',

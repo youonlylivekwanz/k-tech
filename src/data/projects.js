@@ -66,8 +66,8 @@ export const PROJECTS = [
       }
     ],
     links: {
-      website: 'https://ni-interactive.vercel.app',
-      demo: '#',
+      website: 'https://ni-mauve.vercel.app',
+      demo: 'https://ni-mauve.vercel.app',
       source: 'local:ni'
     }
   },
@@ -76,16 +76,16 @@ export const PROJECTS = [
     number: '03',
     title: 'Buddy Learning LMS',
     subtitle: 'Centralized Tutoring Operations, Financial Automation & Enterprise Analytics',
-    category: 'EdTech Platform & Proposed LMS',
-    badge: 'Proposed LMS Specification',
+    category: 'EdTech Platform & Tutoring LMS',
+    badge: 'Live Platform & Architecture',
     accentColor: '#F8991D',
     year: '2026',
-    overview: 'A comprehensive software platform proposal, operational implementation plan, and technical architecture for an AI-integrated Learning Management System transforming manual scheduling and spreadsheets into a high-concurrency automated digital ecosystem.',
+    overview: 'A comprehensive software platform, operational implementation plan, and technical architecture for an AI-integrated Learning Management System transforming manual scheduling and spreadsheets into a high-concurrency automated digital ecosystem.',
     tags: ['Next.js 19', 'FastAPI (Python)', 'PostgreSQL RDS', 'AWS S3 Vault', 'POPIA Compliant'],
     stats: [
       { label: 'Portals', value: '4 Dedicated Roles' },
       { label: 'Backend', value: 'FastAPI Async Engine' },
-      { label: 'Status', value: 'Proposed Specification' },
+      { label: 'Deployment', value: 'Live on Vercel' },
     ],
     architecture: [
       {
@@ -102,8 +102,8 @@ export const PROJECTS = [
       }
     ],
     links: {
-      proposal: '#',
-      comingSoon: true,
+      website: 'https://buddy-learning-ten.vercel.app/',
+      demo: 'https://buddy-learning-ten.vercel.app/',
       source: 'local:buddy-learning'
     }
   }
