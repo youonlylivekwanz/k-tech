@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semadi Properties | Property Management Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-subtle: #F1F5F9;
+      --border: #E2E8F0;
+      --border-focus: #CBD5E1;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      
+      --brand-navy: #0B192C;
+      --brand-navy-light: #1E293B;
+      --accent-gold: #C5A880;
+      --accent-gold-hover: #B5966B;
+      --accent-gold-soft: #FBF8F4;
+      
+      --success: #059669;
+      --success-bg: #ECFDF5;
+      --success-border: #A7F3D0;
+      
+      --warning: #D97706;
+      --warning-bg: #FFFBEB;
+      --warning-border: #FDE68A;
+      
+      --danger: #DC2626;
+      --danger-bg: #FEF2F2;
+      --danger-border: #FECACA;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 20px -3px rgba(11, 25, 44, 0.06), 0 4px 6px -2px rgba(11, 25, 44, 0.03);
+      
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Left Minimalist Sidebar */
+    aside {
+      width: 260px;
+      background-color: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-emblem {
+      width: 38px;
+      height: 38px;
+      background: var(--brand-navy);
+      border: 1px solid var(--accent-gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .brand-title line-height: 1.1; }
+    .brand-title h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      letter-spacing: 0.04em;
+    }
+    .brand-title span {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold);
+      font-weight: 700;
+      display: block;
+    }
+
+    .nav-group-title {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      font-weight: 700;
+      padding: 18px 20px 8px;
+    }
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 12px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      margin-bottom: 3px;
+    }
+    .nav-item:hover {
+      background-color: var(--surface-subtle);
+      color: var(--brand-navy);
+    }
+    .nav-item.active {
+      background-color: var(--accent-gold-soft);
+      color: var(--brand-navy);
+      font-weight: 700;
+      border-left: 3px solid var(--accent-gold);
+    }
+    .nav-badge {
+      margin-left: auto;
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+    }
+    .nav-badge.alert {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .sidebar-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+    }
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--brand-navy);
+    }
+    .user-info { flex: 1; min-width: 0; }
+    .user-name { font-size: 0.85rem; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-role { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* Main Content Wrapper */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background-color: var(--bg);
+    }
+
+    /* Top Bar */
+    header {
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      width: 320px;
+    }
+    .search-box input {
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 0.85rem;
+      width: 100%;
+      font-family: var(--font-body);
+      color: var(--text-main);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+    .btn-secondary:hover { background: var(--surface-subtle); }
+    .btn-accent {
+      background: var(--accent-gold);
+      color: #FFFFFF;
+    }
+    .btn-accent:hover { background: var(--accent-gold-hover); }
+
+    /* Page Content Sections */
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 28px 40px;
+    }
+
+    .page-view {
+      display: none;
+    }
+    .page-view.active-page {
+      display: block;
+    }
+
+    .page-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 22px;
+    }
+    .page-title-row h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      margin-bottom: 3px;
+    }
+    .page-title-row p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Minimalist KPI Metric Row */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .kpi-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .kpi-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .kpi-subtext {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .kpi-subtext.positive { color: var(--success); font-weight: 600; }
+    .kpi-subtext.alert { color: var(--danger); font-weight: 600; }
+
+    /* Clean Minimalist Data Panels */
+    .dashboard-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .panel-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+    }
+    .panel-header h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+    }
+    .panel-header .badge-count {
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    th {
+      padding: 11px 18px;
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: #FAFAFC; }
+
+    /* Minimal Status Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    .badge-confirmed {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+    }
+    .badge-confirmed .badge-dot { background: var(--success); }
+    
+    .badge-pending {
+      background: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid var(--warning-border);
+    }
+    .badge-pending .badge-dot { background: var(--warning); }
+    
+    .badge-unverified {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+    .badge-unverified .badge-dot { background: var(--danger); }
+
+    .btn-table {
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-table:hover { background: var(--surface-subtle); }
+    .btn-table.primary {
+      background: var(--brand-navy);
+      color: #FFFFFF;
+      border-color: var(--brand-navy);
+    }
+    .btn-table.verify {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border-color: #BFDBFE;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(2px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      width: 540px;
+      max-width: 90vw;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .modal-header {
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+    }
+    .modal-body {
+      padding: 20px 22px;
+      font-size: 0.88rem;
+    }
+    .modal-footer {
+      padding: 14px 22px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-subtle);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left Sidebar Navigation -->
+  <aside>
+    <div class="sidebar-header">
+      <div class="brand-emblem">S</div>
+      <div class="brand-title">
+        <h2>SEMADI</h2>
+        <span>PROPERTIES</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="nav-group-title">Operations Control</div>
+      <div class="nav-item active" id="nav-overview" onclick="showDashboardPage('overview')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Overview</span>
+      </div>
+      <div class="nav-item" id="nav-properties" onclick="showDashboardPage('properties')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Property Inventory</span>
+        <span class="nav-badge" id="badge-prop-count">48</span>
+      </div>
+      <div class="nav-item" id="nav-bookings" onclick="showDashboardPage('bookings')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Short-Term Bookings</span>
+        <span class="nav-badge alert">2 Pending</span>
+      </div>
+      <div class="nav-item" id="nav-leases" onclick="showDashboardPage('leases')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        <span>Leases &amp; Tenants</span>
+      </div>
+
+      <div class="nav-group-title">Finance &amp; CRM</div>
+      <div class="nav-item" id="nav-finance" onclick="showDashboardPage('finance')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="18"></line><line x1="8" y1="10" x2="16" y2="10"></line></svg>
+        <span>Verified Ledger (POP)</span>
+        <span class="nav-badge alert">1 Verify</span>
+      </div>
+      <div class="nav-item" id="nav-leads" onclick="showDashboardPage('leads')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path></svg>
+        <span>Sales Leads CRM</span>
+      </div>
+      <div class="nav-item" id="nav-maintenance" onclick="showDashboardPage('maintenance')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        <span>Maintenance Work</span>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-avatar">SP</div>
+      <div class="user-info">
+        <div class="user-name">Semadi Admin</div>
+        <div class="user-role">Super Administrator</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Work Area -->
+  <main>
+    <!-- Top Bar -->
+    <header>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#94A3B8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" placeholder="Search reference, guest, property...">
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary" onclick="syncCalendars(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          Sync iCal (Airbnb)
+        </button>
+        <a href="app_prototype.html" target="_blank" class="btn btn-secondary">Mobile App &rarr;</a>
+        <a href="preview.html" target="_blank" class="btn btn-secondary">Website &rarr;</a>
+        <button class="btn btn-accent" onclick="openAddPropertyModal()">+ Add Property</button>
+      </div>
+    </header>
+
+    <!-- Scrollable Content Area with Page Switcher -->
+    <div class="content-area">
+
+      <!-- ==================== PAGE 1: OVERVIEW ==================== -->
+      <div class="page-view active-page" id="page-overview">
+        <div class="page-title-row">
+          <div>
+            <h1>Operations Overview</h1>
+            <p>Integrated performance for Waterfall City, Sandton, Pretoria, and Western Cape.</p>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+            Live Concurrency Guard: ACTIVE &bull; Zero Double-Bookings
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Active Portfolio Units</div>
+            <div class="kpi-number" id="kpi-total-units">48</div>
+            <div class="kpi-subtext">28 Long-term &bull; 14 Short-stay &bull; 6 Sale</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Short-Term Occupancy</div>
+            <div class="kpi-number">84.2%</div>
+            <div class="kpi-subtext positive">&uarr; +6.8% vs last month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Monthly Settled Revenue</div>
+            <div class="kpi-number">R 684,250</div>
+            <div class="kpi-subtext positive">&check; Bank verified clearance</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Tenant Arrears Outstanding</div>
+            <div class="kpi-number" style="color: var(--danger);">R 32,400</div>
+            <div class="kpi-subtext alert">&excl; 2 accounts overdue (&gt; 5 days)</div>
+          </div>
+        </div>
+
+        <!-- Quick Summary Table -->
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>Recent Bookings &amp; Quick Actions</h3>
+            <span class="badge-count">3 Recent</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Property</th>
+                <th>Guest</th>
+                <th>Dates</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>BK-8492</strong></td>
+                <td>Ellipse Waterfall (Cassini Suite)</td>
+                <td>Dr. T. Mokoena</td>
+                <td>15 Nov - 19 Nov (4 nights)</td>
+                <td>R 13,440.00</td>
+                <td><span class="badge badge-confirmed"><span class="badge-dot"></span> Confirmed</span></td>
+                <td><button class="btn-table primary" onclick="alert('Access Code 8492# dispatched via WhatsApp.')">Send Keypad Code</button></td>
+              </tr>
+              <tr>
+                <td><strong>BK-8493</strong></td>
+                <td>Camps Bay Ocean Villa</td>
+                <td>J. Van Der Merwe</td>
+                <td>02 Dec - 07 Dec (5 nights)</td>
+                <td>R 24,150.00</td>
+                <td><span class="badge badge-pending"><span class="badge-dot"></span> Pending Review</span></td>
+                <td><button class="btn-table primary" onclick="approveStay(this)">Approve Request</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE 2: PROPERTY INVENTORY ==================== -->
+      <div class="page-view" id="page-properties">
+        <div class="page-title-row">
+          <div>
+            <h1>Property Inventory (48 Units)</h1>
+            <p>Manage listings, update rates, toggle availability, and assign property managers.</p>
+          </div>
+          <button class="btn btn-accent" onclick="openAddPropertyModal()">+ Add New Listing</button>
+        </div>
+
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>All Registered Properties</h3>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn-table" onclick="filterTable('ALL')">All (48)</button>
+              <button class="btn-table" onclick="filterTable('SHORT')">Short-Term (14)</button>
+              <button class="btn-table" onclick="filterTable('LONG')">Long-Term (28)</button>
+              <button class="btn-table" onclick="filterTable('SALE')">For Sale (6)</button>
+            </div>
+          </div>
+          <table id="inventory-table">
+            <thead>
+              <tr>
+                <th>Ref #</th>
+                <th>Property Title</th>
+                <th>Location / Node</th>
+                <th>Category</th>
+                <th>Pricing Structure (ZAR)</th>
+                <th>Backup Power</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>SEM-WF-0104</strong></td>
+                <td>Ellipse Waterfall (Cassini Suite 402)</td>
+                <td>Waterfall City, Midrand</td>
+                <td>Short-Term Stay</td>
+                <td>R 2,450 / night</td>
+                <td><span style="color: var(--success); font-weight: 700;">&check; Full Solar Inverter</span></td>
+                <td><span class="badge badge-confirmed">Available</span></td>
+                <td><button class="btn-table" onclick="editProperty('SEM-WF-0104')">Edit</button></td>
+              </tr>
+              <tr>
+                <td><strong>SEM-JHB-022</strong></td>
+                <td>The Leonardo High-Rise Suite</td>
+                <td>Sandton Central</td>
+                <td>Short-Term Stay</td>
+                <td>R 1,950 / night</td>
+                <td><span style="color: var(--success); font-weight: 700;">&check; Generator</span></td>
+                <td><span class="badge badge-confirmed">Available</span></td>
+                <td><button class="btn-table" onclick="editProperty('SEM-JHB-022')">Edit</button></td>
+              </tr>
+              <tr>
+                <td><strong>SEM-LT-041</strong></td>
+                <td>Park Central Designer Apartment</td>
+                <td>Rosebank, JHB</td>
+                <td>Long-Term Lease</td>
+                <td>R 18,500 / month</td>
+                <td><span style="color: var(--success); font-weight: 700;">&check; Inverter</span></td>
+                <td><span class="badge badge-pending">Occupied (Lease)</span></td>
+                <td><button class="btn-table" onclick="editProperty('SEM-LT-041')">Edit</button></td>
+              </tr>
+              <tr>
+                <td><strong>SEM-WC-009</strong></td>
+                <td>St Helena Bay Coastal Stand 580m&sup2;</td>
+                <td>West Coast, Western Cape</td>
+                <td>For Sale</td>
+                <td>R 680,000</td>
+                <td>N/A (Vacant Land)</td>
+                <td><span class="badge badge-confirmed">For Sale</span></td>
+                <td><button class="btn-table" onclick="editProperty('SEM-WC-009')">Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE 3: SHORT-TERM BOOKINGS ==================== -->
+      <div class="page-view" id="page-bookings">
+        <div class="page-title-row">
+          <div>
+            <h1>Short-Term Bookings &amp; Calendar</h1>
+            <p>Two-way iCal synchronization with Airbnb &amp; Booking.com plus direct website bookings.</p>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--success); font-weight: 700;">
+            &bull; Airbnb iCal Sync: Live (Synced 4 mins ago)
+          </div>
+        </div>
+
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>Active &amp; Upcoming Reservations</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Booking Ref</th>
+                <th>Property</th>
+                <th>Guest</th>
+                <th>Check-in &rarr; Out</th>
+                <th>Nights</th>
+                <th>Source</th>
+                <th>Amount (ZAR)</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>BK-8492</strong></td>
+                <td>Ellipse Waterfall (Cassini 402)</td>
+                <td>Dr. T. Mokoena</td>
+                <td>15 Nov &rarr; 19 Nov 2026</td>
+                <td>4</td>
+                <td><strong>Direct (Semadi Web)</strong></td>
+                <td>R 13,440.00</td>
+                <td><span class="badge badge-confirmed">Confirmed</span></td>
+                <td><button class="btn-table primary" onclick="alert('Access Code & Check-in PDF sent to guest.')">Resend PIN</button></td>
+              </tr>
+              <tr>
+                <td><strong>BK-8493</strong></td>
+                <td>Camps Bay Ocean Villa</td>
+                <td>J. Van Der Merwe</td>
+                <td>02 Dec &rarr; 07 Dec 2026</td>
+                <td>5</td>
+                <td><strong>Direct (Semadi Web)</strong></td>
+                <td>R 24,150.00</td>
+                <td><span class="badge badge-pending">Pending Review</span></td>
+                <td>
+                  <button class="btn-table primary" onclick="approveStay(this)">Approve &amp; Invoice</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>BK-AIR-912</strong></td>
+                <td>Sandton Skye Loft</td>
+                <td>S. Pillay</td>
+                <td>22 Nov &rarr; 25 Nov 2026</td>
+                <td>3</td>
+                <td><span style="color: #FF5A5F; font-weight: 700;">Airbnb (iCal)</span></td>
+                <td>R 5,850.00</td>
+                <td><span class="badge badge-confirmed">Confirmed (OTA)</span></td>
+                <td><button class="btn-table" onclick="alert('Viewing Airbnb booking metadata.')">View iCal Feed</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE 4: LEASES & TENANTS ==================== -->
+      <div class="page-view" id="page-leases">
+        <div class="page-title-row">
+          <div>
+            <h1>Long-Term Leases &amp; Tenants</h1>
+            <p>Rental Housing Act compliant contracts, deposit tracking, and arrears alerts.</p>
+          </div>
+          <button class="btn btn-accent" onclick="alert('Generate New Lease Wizard opened.')">+ New Lease Agreement</button>
+        </div>
+
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>Active Residential &amp; Commercial Leases</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Lease #</th>
+                <th>Tenant</th>
+                <th>Unit</th>
+                <th>Monthly Rent</th>
+                <th>Deposit Held (Trust)</th>
+                <th>Lease Expiry</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LS-2026-041</strong></td>
+                <td>S. Khumalo</td>
+                <td>Park Central 4B (Rosebank)</td>
+                <td>R 18,500.00</td>
+                <td>R 18,500.00 (Interest Accruing)</td>
+                <td>31 Oct 2027</td>
+                <td><span class="badge badge-confirmed">Active</span></td>
+                <td><button class="btn-table" onclick="alert('Downloading signed lease PDF.')">Download PDF</button></td>
+              </tr>
+              <tr>
+                <td><strong>LS-2026-088</strong></td>
+                <td>L. Dlamini</td>
+                <td>Rosebank Link Suite 12</td>
+                <td>R 14,200.00</td>
+                <td>R 14,200.00</td>
+                <td>15 Dec 2026 (Expiring Soon!)</td>
+                <td><span class="badge badge-pending">Renewal Due</span></td>
+                <td><button class="btn-table primary" onclick="alert('Automated 60-day renewal notice emailed to tenant.')">Send Renewal</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE 5: FINANCE & VERIFIED LEDGER ==================== -->
+      <div class="page-view" id="page-finance">
+        <div class="page-title-row">
+          <div>
+            <h1>Verified Ledger &amp; Proof of Payment (POP)</h1>
+            <p>Inspect tenant electronic transfer slips before reconciling against live bank statements.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="alert('Exporting verified accounting ledger to CSV/Excel.')">&darr; Export SARS Ledger (CSV)</button>
+        </div>
+
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>Tenant Payment Reconciliation Queue</h3>
+            <span class="badge-count" style="background: var(--danger-bg); color: var(--danger);">1 Unverified POP</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Invoice #</th>
+                <th>Tenant Name</th>
+                <th>Property Unit</th>
+                <th>Amount</th>
+                <th>Payment Slip</th>
+                <th>Verification Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>INV-1092</strong></td>
+                <td>S. Khumalo</td>
+                <td>Park Central 4B</td>
+                <td>R 18,500.00</td>
+                <td><a href="javascript:void(0)" onclick="openPOPModal('S. Khumalo', 'Park Central 4B', 'R 18,500.00')">FNB_EFT_Slip_Nov2026.pdf</a></td>
+                <td><span class="badge badge-unverified"><span class="badge-dot"></span> POP Uploaded (Unverified)</span></td>
+                <td>
+                  <button class="btn-table verify" onclick="openPOPModal('S. Khumalo', 'Park Central 4B', 'R 18,500.00')">Inspect &amp; Verify Settlement</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>INV-1088</strong></td>
+                <td>L. Dlamini</td>
+                <td>Rosebank Link 12</td>
+                <td>R 14,200.00</td>
+                <td>Ozow Instant Bank Settlement</td>
+                <td><span class="badge badge-confirmed"><span class="badge-dot"></span> Settled (Ozow EFT)</span></td>
+                <td><button class="btn-table" onclick="alert('Viewing automated bank receipt.')">View Receipt</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE 6: SALES LEADS CRM ==================== -->
+      <div class="page-view" id="page-leads">
+        <div class="page-title-row">
+          <div>
+            <h1>Sales Leads &amp; Buyer Pipeline</h1>
+            <p>Property viewings, qualified buyer leads, and Offer to Purchase (OTP) tracking.</p>
+          </div>
+          <button class="btn btn-accent" onclick="alert('Log New Buyer Lead opened.')">+ New Buyer Lead</button>
+        </div>
+
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>Active Buyer Inquiries &amp; Viewings</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Lead Ref</th>
+                <th>Buyer Name</th>
+                <th>Property of Interest</th>
+                <th>Budget (ZAR)</th>
+                <th>Bond Pre-Qualified</th>
+                <th>Stage</th>
+                <th>Assigned Agent</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LEAD-402</strong></td>
+                <td>Adv. R. Sithole</td>
+                <td>Waterkloof Manor (Pretoria)</td>
+                <td>R 6,850,000</td>
+                <td><span style="color: var(--success); font-weight: 700;">&check; Yes (Standard Bank)</span></td>
+                <td><span class="badge badge-confirmed">Viewing Scheduled</span></td>
+                <td>Agent Sipho</td>
+                <td><button class="btn-table primary" onclick="alert('Viewing confirmed for Sat 14:00. WhatsApp reminder active.')">Confirm Slot</button></td>
+              </tr>
+              <tr>
+                <td><strong>LEAD-398</strong></td>
+                <td>G. Hendricks</td>
+                <td>St Helena Bay Coastal Stand</td>
+                <td>R 700,000</td>
+                <td>Cash Buyer</td>
+                <td><span class="badge badge-pending">Offer Submitted</span></td>
+                <td>Agent Michelle</td>
+                <td><button class="btn-table" onclick="alert('Viewing formal OTP document.')">View OTP Form</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE 7: MAINTENANCE ==================== -->
+      <div class="page-view" id="page-maintenance">
+        <div class="page-title-row">
+          <div>
+            <h1>Maintenance &amp; Operations Dispatch</h1>
+            <p>Solar inverter upkeep, plumbing, security gates, and turnover inspections.</p>
+          </div>
+          <button class="btn btn-accent" onclick="alert('Create Work Order opened.')">+ Log Work Order</button>
+        </div>
+
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3>Open Work Orders</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Ticket #</th>
+                <th>Property</th>
+                <th>Issue Category</th>
+                <th>Priority</th>
+                <th>Assigned Contractor</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>MN-042</strong></td>
+                <td>Ellipse Cassini 402</td>
+                <td>Solar Inverter Firmware Check</td>
+                <td><span style="color: var(--danger); font-weight: 700;">HIGH</span></td>
+                <td>Waterfall Solar Services</td>
+                <td><span class="badge badge-pending">In Progress</span></td>
+                <td><button class="btn-table primary" onclick="resolveTicket(this)">Mark Resolved</button></td>
+              </tr>
+              <tr>
+                <td><strong>MN-041</strong></td>
+                <td>The Leonardo Loft</td>
+                <td>Departure Sanitization &amp; Linens</td>
+                <td><span style="color: var(--warning); font-weight: 700;">MEDIUM</span></td>
+                <td>Semadi Housekeeping Team</td>
+                <td><span class="badge badge-confirmed">Ready for Guest</span></td>
+                <td><button class="btn-table" onclick="alert('Checklist completed.')">View Inspection</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add Property Modal -->
+  <div class="modal-overlay" id="add-property-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h4>Add New Property Listing</h4>
+        <button style="border: none; background: none; font-size: 1.2rem; cursor: pointer;" onclick="closeAddPropertyModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Property Title</label>
+          <input type="text" id="new-prop-title" placeholder="e.g. Ellipse Newton Executive Penthouse">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Location / Node</label>
+            <input type="text" id="new-prop-location" placeholder="e.g. Waterfall City, Midrand">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="new-prop-category">
+              <option value="Short-Term Stay">Short-Term Stay</option>
+              <option value="Long-Term Lease">Long-Term Lease</option>
+              <option value="For Sale">For Sale</option>
+              <option value="Commercial">Commercial</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Price (ZAR)</label>
+            <input type="number" id="new-prop-price" placeholder="e.g. 2450">
+          </div>
+          <div class="form-group">
+            <label>Backup Power</label>
+            <select id="new-prop-solar">
+              <option value="Full Solar Inverter">Full Solar Inverter (Load-Shedding Proof)</option>
+              <option value="Generator">Generator Backup</option>
+              <option value="None">None</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAddPropertyModal()">Cancel</button>
+        <button class="btn btn-accent" onclick="saveNewProperty()">Save &amp; Publish Listing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POP Inspection Modal -->
+  <div class="modal-overlay" id="pop-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h4>Verify Bank Settlement (POP Verification)</h4>
+        <button style="border: none; background: none; font-size: 1.2rem; cursor: pointer;" onclick="closePOPModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: var(--surface-subtle); border: 1px dashed var(--border); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 14px; font-family: monospace; font-size: 0.8rem;">
+          <div style="font-weight: bold; margin-bottom: 6px; color: var(--brand-navy);">FIRST NATIONAL BANK (FNB) - PAYMENT NOTIFICATION</div>
+          <div>Beneficiary: SEMADI PROPERTIES (PTY) LTD (Trust Acc ...9201)</div>
+          <div>Amount: <strong id="pop-modal-amount">R 18,500.00</strong></div>
+          <div>Reference: Park Central 4B - Rent Nov 2026</div>
+          <div>Status: Electronic Transfer (Pending Live Statement Match)</div>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">
+          Warning: Confirming will mark invoice <strong>INV-1092</strong> as settled, adjust tenant ledger balance to R 0.00, and dispatch official VAT receipt.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closePOPModal()">Cancel</button>
+        <button class="btn btn-accent" onclick="confirmPOPSettlement()">Confirm Clearance &amp; Issue Receipt</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showDashboardPage(pageId) {
+      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+      const targetPage = document.getElementById('page-' + pageId);
+      const targetNav = document.getElementById('nav-' + pageId);
+
+      if (targetPage) targetPage.classList.add('active-page');
+      if (targetNav) targetNav.classList.add('active');
+    }
+
+    function approveStay(btn) {
+      const parent = btn.closest('tr');
+      parent.querySelector('.badge').className = 'badge badge-confirmed';
+      parent.querySelector('.badge').innerHTML = '<span class="badge-dot"></span> Confirmed';
+      btn.parentElement.innerHTML = '<span style="font-size: 0.75rem; color: var(--success); font-weight: 700;">&check; Invoiced via Peach</span>';
+      alert('Booking approved! Peach Payments invoice & WhatsApp notification dispatched to guest.');
+    }
+
+    function syncCalendars(btn) {
+      btn.innerHTML = 'Syncing...';
+      setTimeout(() => {
+        btn.innerHTML = '&check; Synced with Airbnb';
+        alert('iCal Synchronization Complete:\n\n&bull; Airbnb: 1 new reservation imported (BK-AIR-912)\n&bull; Booking.com: 0 collisions\n&bull; Outgoing Semadi iCal feed updated.');
+      }, 700);
+    }
+
+    function openAddPropertyModal() {
+      document.getElementById('add-property-modal').style.display = 'flex';
+    }
+
+    function closeAddPropertyModal() {
+      document.getElementById('add-property-modal').style.display = 'none';
+    }
+
+    function saveNewProperty() {
+      const title = document.getElementById('new-prop-title').value || 'Ellipse Cassini Penthouse';
+      const loc = document.getElementById('new-prop-location').value || 'Waterfall City, Midrand';
+      const cat = document.getElementById('new-prop-category').value;
+      const price = document.getElementById('new-prop-price').value || '2450';
+      const solar = document.getElementById('new-prop-solar').value;
+
+      const table = document.getElementById('inventory-table').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow(0);
+
+      const ref = 'SEM-WF-0' + Math.floor(100 + Math.random() * 900);
+
+      newRow.innerHTML = `
+        <td><strong>${ref}</strong></td>
+        <td>${title}</td>
+        <td>${loc}</td>
+        <td>${cat}</td>
+        <td>R ${parseFloat(price).toLocaleString()}</td>
+        <td><span style="color: var(--success); font-weight: 700;">&check; ${solar}</span></td>
+        <td><span class="badge badge-confirmed">Available</span></td>
+        <td><button class="btn-table" onclick="alert('Editing ${ref}')">Edit</button></td>
+      `;
+
+      closeAddPropertyModal();
+      alert('Success! Property ' + ref + ' (' + title + ') published to live database and visible on mobile app & public website.');
+      showDashboardPage('properties');
+    }
+
+    function editProperty(ref) {
+      alert('Editing metadata and photos for property ' + ref);
+    }
+
+    function openPOPModal(tenant, unit, amount) {
+      document.getElementById('pop-modal-amount').textContent = amount;
+      document.getElementById('pop-modal').style.display = 'flex';
+    }
+
+    function closePOPModal() {
+      document.getElementById('pop-modal').style.display = 'none';
+    }
+
+    function confirmPOPSettlement() {
+      alert('Settlement verified against bank statement. Invoice INV-1092 marked as SETTLED. Tenant ledger updated to R 0.00.');
+      closePOPModal();
+      showDashboardPage('finance');
+    }
+
+    function resolveTicket(btn) {
+      const row = btn.closest('tr');
+      row.querySelector('.badge').className = 'badge badge-confirmed';
+      row.querySelector('.badge').textContent = 'Resolved & Verified';
+      btn.parentElement.innerHTML = '<span style="color: var(--success); font-weight: 700; font-size: 0.75rem;">&check; Closed</span>';
+      alert('Ticket marked as resolved. Owner inspection certificate updated.');
+    }
+
+    function filterTable(cat) {
+      alert('Filtering inventory by ' + cat + '. Result set updated.');
+    }
+  </script>
+</body>
+</html>
